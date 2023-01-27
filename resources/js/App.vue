@@ -35,7 +35,16 @@ export default {
 
 <template>
 
-    <ProjectCard />
+<header>
+        <ul>
+            <li><router-link :to="{ name: 'home'}">home</router-link></li>
+            <li><router-link :to="{ name: 'about'}">chi siamo</router-link></li>
+        </ul>
+    </header>
+
+    <router-view></router-view>
+
+    <!-- <ProjectCard /> -->
 
     <div class="paginate text-center my-5">
 
