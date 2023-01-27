@@ -74,6 +74,7 @@ class ProjectController extends Controller
     {
         $form_data = $request->all();
 
+        //dd($form_data['cover_image']);
         if(array_key_exists('cover_image',$form_data)){
 
             $form_data['image_original_name'] = $request->file('cover_image')->getClientOriginalName();

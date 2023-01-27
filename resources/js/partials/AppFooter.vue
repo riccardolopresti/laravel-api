@@ -7,7 +7,7 @@
 <template>
   <footer class="d-flex justify-content-center pt-2">
     <p >
-        Made with love by 
+        Made with &hearts; by 
         <a href="https://github.com/RiccardoLoPresti" target="_blank">
             <i class="fa-brands fa-github"></i> Riccardo Lo Presti
         </a>

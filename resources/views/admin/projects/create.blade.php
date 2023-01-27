@@ -116,13 +116,10 @@
             .catch( error => {
                 console.error( error );
             } );
-    function showImg(event){
-        const tagImage = document.getElementById('output-image-container');
-        tagImage.innerHTML= '';
-        for (let i = 0; i < event.target.files.length; i++) {
-            element = ` <img id="output-image" src="${URL.createObjectURL(event.target.files[i])}" alt=""> `
-            tagImage.innerHTML += element;
-        }
+
+    function showImage(event){
+        const tagImage = document.getElementById('output-image');
+        tagImage.src = URL.createObjectURL(event.target.files[0]);
     }
 </script>
 @endsection
