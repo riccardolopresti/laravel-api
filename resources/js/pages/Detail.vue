@@ -41,6 +41,8 @@ import {store} from '../store.js'
 
                 <div class="card-body">
 
+                    <img :src="store.projectDetail.cover_image" :alt="store.projectDetail.name">
+
                     <h5 class="card-title">{{store.projectDetail.name}}</h5>
                     <div class="d-block">
                     <span class="badge rounded-pill text-bg-info me-1">{{store.projectDetail.type.name}}</span>
@@ -49,6 +51,12 @@ import {store} from '../store.js'
                             {{item.name}}
                         </span>
                     <p v-html="store.projectDetail.summary" class="card-text"></p>
+
+                    <a href="#" class="btn btn-primary">
+                        <router-link :to="{name: 'projectspage'}">
+                            Torna a tutti i Progetti
+                        </router-link>
+                    </a>
 
                 </div>
             </div>
@@ -65,4 +73,13 @@ import {store} from '../store.js'
 h1{
     text-shadow: 0 0  5px rgba(0, 0, 0, 0.782);
 }
+
+a{
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        transition: all 0.45s;
+        &:hover{
+            color: rgb(215, 215, 215);
+        }
+    }
 </style>
