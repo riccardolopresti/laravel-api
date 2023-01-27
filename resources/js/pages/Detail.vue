@@ -13,8 +13,7 @@ import {store} from '../store.js'
     }
   },
   methods:{
-    getApi(page){
-      store.current = page
+    getApi(){
       axios.get(store.baseUrl + this.$route.params.slug )
         .then(result => {
           store.projectDetail = result.data;
@@ -23,7 +22,7 @@ import {store} from '../store.js'
     }
   },
   mounted(){
-    this.getApi(store.current)
+    this.getApi();
     //console.log(this.$route.params.slug);
   }
     }
@@ -37,15 +36,13 @@ import {store} from '../store.js'
 
             <div class="card">
 
-                <img src="#" class="card-img-top" alt="">
-
                 <div class="card-body">
 
                     <img :src="store.projectDetail.cover_image" :alt="store.projectDetail.name">
 
                     <h5 class="card-title">{{store.projectDetail.name}}</h5>
                     <div class="d-block">
-                    <span class="badge rounded-pill text-bg-info me-1">{{store.projectDetail.type.name}}</span>
+                    <!-- <span class="badge rounded-pill text-bg-info me-1">{{store.projectDetail.type.name}}</span> -->
                     </div>
                         <span v-for="item in store.projectDetail.technologies" :key="item.id" class="badge text-bg-dark me-1">
                             {{item.name}}

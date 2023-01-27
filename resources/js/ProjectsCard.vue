@@ -14,7 +14,7 @@ export default {
 <template>
   <div class="container">
     <div class="row">
-      <div class="col d-flex flex-wrap ">
+      <div class="col d-flex flex-wrap justify-content-center">
         <div v-for="project in store.projects" :key="project.id" class="card m-2" style="width: 18rem;">
 
           <div class="card-body">
