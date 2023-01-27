@@ -35,7 +35,7 @@ main {
 	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
-	height:calc(100vh - 75px) ;
+	height:calc(100vh - 75px - 50px) ;
     margin-top: 75px;
 }
 
