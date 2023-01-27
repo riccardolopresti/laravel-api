@@ -13,7 +13,6 @@ export default {
 
 <template>
   <div class="container">
-    <h1 class="text-center">HOME PAGE</h1>
     <div class="row">
       <div class="col d-flex flex-wrap ">
         <div v-for="project in store.projects" :key="project.id" class="card m-2" style="width: 18rem;">

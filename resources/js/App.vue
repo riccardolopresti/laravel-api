@@ -1,5 +1,5 @@
 <script>
-import ProjectCard from './ProjectsCard.vue'
+import AppHeader from './partials/AppHeader.vue'
 
 import axios from 'axios'
 import {store} from './store.js'
@@ -7,7 +7,7 @@ import {store} from './store.js'
 export default {
   name: 'App',
   components:{
-    ProjectCard
+    AppHeader
   },
   data(){
     return{
@@ -35,26 +35,12 @@ export default {
 
 <template>
 
-<header>
-        <ul>
-            <li><router-link :to="{ name: 'home'}">home</router-link></li>
-            <li><router-link :to="{ name: 'about'}">chi siamo</router-link></li>
-        </ul>
-    </header>
+    <AppHeader/>
 
     <router-view></router-view>
 
-    <!-- <ProjectCard /> -->
 
-    <div class="paginate text-center my-5">
 
-        <button :disabled="store.current === 1" type="button" class="btn btn-outline-secondary me-1">prev</button>
-
-        <button  v-for="i in store.last" :key="i" type="button" class="btn btn-outline-secondary me-1" @click="this.getApi(i)">{{i}}</button>
-
-        <button :disabled="store.current === store.last" type="button" class="btn btn-outline-secondary ms-1" @click="this.getApi(store.current + 1)">next</button>
-
-    </div>
 
 </template>
 
