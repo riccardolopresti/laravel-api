@@ -42,7 +42,7 @@ import {store} from '../store.js'
 
                     <h5 class="card-title">{{store.projectDetail.name}}</h5>
                     <div class="d-block">
-                    <!-- <span class="badge rounded-pill text-bg-info me-1">{{store.projectDetail.type.name}}</span> -->
+                    <span v-if="store.projectDetail.type" class="badge rounded-pill text-bg-info me-1">{{store.projectDetail.type.name}}</span>
                     </div>
                         <span v-for="item in store.projectDetail.technologies" :key="item.id" class="badge text-bg-dark me-1">
                             {{item.name}}
