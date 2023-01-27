@@ -36,6 +36,7 @@ main {
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height:calc(100vh - 75px) ;
+    margin-top: 75px;
 }
 
 @keyframes gradient {

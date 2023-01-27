@@ -53,6 +53,12 @@
 header{
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.059);
     height: 75px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white ;
+    z-index: 99;
 }
 li{
     margin: 0px 10px;
