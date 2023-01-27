@@ -28,23 +28,25 @@ export default {
     }
   },
   mounted(){
-    this.getApi(1)
+    this.getApi(store.current)
   }
 }
 </script>
 
 <template>
-  <ProjectCard />
 
-  <div class="paginate text-center my-5">
+    <ProjectCard />
 
-    <button :disabled="store.current === 1" type="button" class="btn btn-outline-secondary me-1">prev</button>
+    <div class="paginate text-center my-5">
 
-    <button  v-for="i in store.last" :key="i" type="button" class="btn btn-outline-secondary me-1" @click="this.getApi(i)">{{i}}</button>
+        <button :disabled="store.current === 1" type="button" class="btn btn-outline-secondary me-1">prev</button>
 
-    <button :disabled="store.current === store.last" type="button" class="btn btn-outline-secondary ms-1" @click="this.getApi(store.current + 1)">next</button>
+        <button  v-for="i in store.last" :key="i" type="button" class="btn btn-outline-secondary me-1" @click="this.getApi(i)">{{i}}</button>
 
-  </div>
+        <button :disabled="store.current === store.last" type="button" class="btn btn-outline-secondary ms-1" @click="this.getApi(store.current + 1)">next</button>
+
+    </div>
+
 </template>
 
 <style lang="scss">
