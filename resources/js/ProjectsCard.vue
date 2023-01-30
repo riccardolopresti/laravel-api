@@ -17,7 +17,7 @@ export default {
       <div class="col d-flex flex-wrap justify-content-center">
         <div v-for="project in store.projects" :key="project.id" class="card m-2" style="width: 18rem;">
 
-          <div class="card-body">
+          <div class="card-body rl-card">
             <h5 class="card-title">
                 <router-link :to="{name: 'detail', params:{slug: project.slug} }">{{project.name}}</router-link>
             </h5>
@@ -26,7 +26,7 @@ export default {
               <span class="badge rounded-pill text-bg-info me-1">{{project.type.name}}</span>
             </div>
             <span v-for="item in project.technologies" :key="item.id" class="badge text-bg-dark me-1">{{item.name}}</span>
-            <p v-html="project.summary" class="card-text"></p>
+            <p v-html="project.summary" class="card-text text-truncate"></p>
 
           </div>
 
@@ -48,6 +48,10 @@ a{
         text-decoration: underline;
         color: #e73c7e;
     }
+}
+
+.card-body.rl-card{
+    box-shadow: 0 0px 5px 5px #0000000b;
 }
 
 </style>
