@@ -25,8 +25,10 @@ import {store} from '../store.js'
       axios.get(store.baseUrl, {params: {page: store.current }})
         .then(result => {
           store.projects = result.data.projects.data;
+          store.types = result.data.types;
           store.current = result.data.projects.current_page
           store.last = result.data.projects.last_page
+          console.log(store.types);
           //console.log(store.baseUrl, {params: {page: store.current }})
         })
     },

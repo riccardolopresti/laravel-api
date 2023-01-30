@@ -15,25 +15,40 @@ export default {
         getApiSearch(){
             axios.get(store.baseUrl + 'search', {params:  {tosearch: this.tosearch}})
             .then(result => {
-                //store.projects = result.data;
-                console.log(result.data);
+                store.projects = result.data;
+                console.log(store.projects);
             })
-        }
+        },
+
+        getApiSearchTypes(id){
+            axios.get(store.baseUrl + 'types/' + id)
+            .then(result => {
+                store.projects = result.data;
+                console.log(store.projects);
+            })
+        },
+        
     },
 }
 </script>
 
 <template>
 
-    <div class="search-box text-end pb-5 pe-4">
+    <div class="search-box text-end pb-2 pe-4">
 
         <input v-model.trim="this.tosearch" @keyup.enter="getApiSearch()" type="text">
 
         <button @click="getApiSearch()" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
-
+        
     </div>
+    
+        <div class="tech text-end pb-5 pe-4">
+            <span @click="getApiSearchTypes(item.id)" v-for="item in store.types" :key="item.id" class="badge text-bg-dark me-1">
+                {{item.name}}
+            </span>
+        </div>
 
 </template>
 
@@ -53,6 +68,7 @@ input{
 }
 
 button{
+    cursor: pointer;
     border-left: none;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;

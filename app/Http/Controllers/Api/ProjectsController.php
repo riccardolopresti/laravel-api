@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Technology;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -11,7 +13,9 @@ class ProjectsController extends Controller
     public function index(){
         $projects = Project::with(['type','technologies'])->orderBy('id', 'desc')->paginate(10);
 
-        return response()->json(compact('projects'));
+        $types = Type::all();
+
+        return response()->json(compact('projects','types'));
     }
 
     public function show($slug){
@@ -29,7 +33,14 @@ class ProjectsController extends Controller
     public function getSearch(){
         $string_to_search = $_GET['tosearch'];
 
-        $projects = Project::where('name','like',"%$string_to_search%")->get();
+        $projects = Project::where('name','like',"%$string_to_search%")->with(['type','technologies'])->get();
+
+        return response()->json($projects);
+    }
+
+    public function getByType($id){
+
+        $projects = Project::where('type_id',$id)->with(['type','technologies'])->get();
 
         return response()->json($projects);
     }
