@@ -21,7 +21,7 @@ class ProjectController extends Controller
     public function index()
     {
         if(isset($_GET['search'])){
-            $search =$_GET['search'];
+            $search = $_GET['search'];
 
             $projects = Project::where('name','like',"%$search%")
                 ->orWhere('client_name','like',"%$search%")

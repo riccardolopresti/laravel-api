@@ -1,6 +1,7 @@
 <script>
 
 import ProjectCard from '../ProjectsCard.vue'
+import SearchBar from '../SearchBar.vue'
 
 import axios from 'axios'
 import {store} from '../store.js'
@@ -8,7 +9,8 @@ import {store} from '../store.js'
     export default {
         name:'ProjectsPage',
         components:{
-            ProjectCard
+            ProjectCard,
+            SearchBar
         },
         data(){
     return{
@@ -28,13 +30,7 @@ import {store} from '../store.js'
           //console.log(store.baseUrl, {params: {page: store.current }})
         })
     },
-    getApiSearch(){
-        axios.get(store.baseUrl + '/search', {params: this.tosearch})
-        .then(result => {
-          store.projects = result.data;
-          console.log(result.data);
-        })
-    }
+    
   },
   mounted(){
     this.getApi(store.current)
@@ -51,12 +47,7 @@ import {store} from '../store.js'
 
                 <h1 class="text-center py-4 fw-bold text-uppercase text-white">Projects</h1>
 
-                <div class="search-box text-end pb-5 pe-4">
-                    <input v-model.trim="store.tosearch" @keyup.enter="getApiSearch()" type="search">
-                    <button @click="getApiSearch()" type="submit">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div>
+                <SearchBar />
 
                 <ProjectCard />
 
@@ -82,26 +73,6 @@ import {store} from '../store.js'
 
 h1{
     text-shadow: 0 0  5px rgba(0, 0, 0, 0.782);
-}
-
-input,
-button{
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.237);
-}
-
-input{
-    border-right: none ;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-
-}
-
-button{
-    border-left: none;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    padding:1px 10px;
 }
 
 .wrapper{
