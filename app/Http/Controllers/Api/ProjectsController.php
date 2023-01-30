@@ -27,9 +27,9 @@ class ProjectsController extends Controller
     }
 
     public function getSearch(){
-        $tosearch = $_GET['tosearch'];
+        $string_to_search = $_GET['tosearch'];
 
-        $projects = Project::where('name','like',"%$tosearch%")->get();
+        $projects = Project::where('name','like',"%$string_to_search%")->get();
 
         return response()->json($projects);
     }

@@ -7,12 +7,13 @@ export default {
     name: 'SearchBar',
     data(){
         return{
-            store
+            store,
+            tosearch:''
         }
     },
     methods:{
         getApiSearch(){
-            axios.get(store.baseUrl + 'search', {params: this.tosearch})
+            axios.get(store.baseUrl + 'search', {params:  {tosearch: this.tosearch}})
             .then(result => {
                 //store.projects = result.data;
                 console.log(result.data);
@@ -23,12 +24,17 @@ export default {
 </script>
 
 <template>
+
     <div class="search-box text-end pb-5 pe-4">
-        <input v-model.trim="store.tosearch" @keyup.enter="getApiSearch()" type="text">
+
+        <input v-model.trim="this.tosearch" @keyup.enter="getApiSearch()" type="text">
+
         <button @click="getApiSearch()" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
+
     </div>
+
 </template>
 
 <style lang="scss" scoped>
