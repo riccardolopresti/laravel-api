@@ -31,7 +31,7 @@ import {store} from '../store.js'
 <template>
 
     <main>
-        <div class="container">
+        <div class="container pb-5">
             <h1 class="text-center py-4 fw-bold text-uppercase text-white">DETTAGLIO {{store.projectDetail.name}}</h1>
 
             <div class="card">
@@ -58,7 +58,7 @@ import {store} from '../store.js'
                 </div>
             </div>
         </div>
-        
+
 
     </main>
 
@@ -79,4 +79,5 @@ a{
             color: rgb(215, 215, 215);
         }
     }
+
 </style>

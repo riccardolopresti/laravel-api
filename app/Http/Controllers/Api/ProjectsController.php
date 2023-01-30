@@ -10,7 +10,7 @@ class ProjectsController extends Controller
 {
     public function index(){
         $projects = Project::with(['type','technologies'])->orderBy('id', 'desc')->paginate(10);
-        
+
         return response()->json(compact('projects'));
     }
 
@@ -20,7 +20,7 @@ class ProjectsController extends Controller
         if($project->cover_image){
             $project->cover_image = url('storage/' . $project->cover_image);
         }else{
-            $project->cover_image = url('storage/app/public/uploads/placeholder-image.jpg');
+            $project->cover_image = url('storage/uploads/placeholder.png');
         }
 
         return response()->json($project);
