@@ -19,26 +19,26 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li>
-                            <router-link :to="{name: 'home'}"> 
+                            <router-link :to="{name: 'home'}">
                                 Home
                             </router-link>
                         </li>
                         <li>
-                            <router-link :to="{name: 'projectspage'}"> 
+                            <router-link :to="{name: 'projectspage'}">
                                 Progetti
                             </router-link>
                         </li>
                         <li>
-                            <router-link :to="{name: 'about'}"> 
+                            <router-link :to="{name: 'about'}">
                                 Chi sono
                             </router-link>
                         </li>
                         <li>
-                            <router-link :to="{name: 'contacts'}"> 
+                            <router-link :to="{name: 'contacts'}">
                                 Contatti
                             </router-link>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
@@ -73,6 +73,7 @@ li{
 
     .active{
         color: rgb(12, 12, 12);
+        transition: all 0s;
         padding-bottom: 27px;
         border-bottom: 5px solid rgb(12, 12, 12);
     }
