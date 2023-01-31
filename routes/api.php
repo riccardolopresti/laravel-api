@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Api\LeadController;
 use App\Http\Controllers\Api\ProjectsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,5 @@ Route::namespace('Api')
         Route::get('/types/{id}',[ProjectsController::class, 'getByType']);
         Route::get('/{slug}',[ProjectsController::class, 'show']);
     });
+
+Route::post('/contacts', [LeadController::class, 'store']);
