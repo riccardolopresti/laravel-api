@@ -44,7 +44,7 @@ export default {
 <template>
 <div class="container mt-5">
     <div class="wrapper rounded-4 py-3">
-        <form class="w-50 text-start text-black" @submit.prevent="sendForm()">
+        <form class="w-50 text-start text-black">
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nome</label>
@@ -64,7 +64,7 @@ export default {
                 <p class="invalid-feedback" v-for="error in errors.message" :key="error">{{ error }}</p>
             </div>
 
-            <button  type="submit" class="btn btn-primary">Invia</button>
+            <button @click.prevent="sendForm()" type="submit" class="btn btn-primary">Invia</button>
     </form>
     </div>
 
