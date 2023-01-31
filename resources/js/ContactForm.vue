@@ -10,11 +10,14 @@ export default {
             name:'',
             email:'',
             message:'',
-            errors:{}
+            errors:{},
+            isLoading:false,
+            formShow:true
         }
     },
     methods:{
         sendForm(){
+            this.isLoading=true;
             const data = {
                 name : this.name,
                 email : this.email,
@@ -24,8 +27,8 @@ export default {
 
             axios.post('http://127.0.0.1:8000/api/contacts', data)
             .then(result=>{
-                console.log(result.data);
-
+                this.isLoading=false;
+                this.formShow=false;
                 if(!result.data.success){
                     this.errors = result.data.errors;
                 }else{
@@ -44,7 +47,7 @@ export default {
 <template>
 <div class="container mt-5">
     <div class="wrapper rounded-4 py-3">
-        <form class="w-50 text-start text-black">
+        <form v-if="formShow" class="w-50 text-start text-black" @submit.prevent="sendForm()">
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nome</label>
@@ -64,8 +67,10 @@ export default {
                 <p class="invalid-feedback" v-for="error in errors.message" :key="error">{{ error }}</p>
             </div>
 
-            <button @click.prevent="sendForm()" type="submit" class="btn btn-primary">Invia</button>
-    </form>
+            <button  type="submit" class="btn btn-primary" :disabled="isLoading">{{ isLoading ? 'Invio in corso...' : 'Invia'}}</button>
+        </form>
+
+        <h3 class="text-black" v-else>Email mandata con successo!</h3>
     </div>
 
 </div>

@@ -10,8 +10,10 @@ export default {
 </script>
 
 <template>
-        <main>
+    <main>
         <div class="container text-center fw-bold text-white py-4">
+            <h1 class="text-uppercase fw-bold">Contattami</h1>
+
             <ContactForm />
         </div>
 
@@ -19,6 +21,8 @@ export default {
 </template>
 
 
-<style>
-
+<style scoped>
+h1{
+    text-shadow: 0 0  5px rgba(0, 0, 0, 0.782);
+}
 </style>
