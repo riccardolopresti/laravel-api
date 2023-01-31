@@ -1,6 +1,6 @@
 <script>
-
-import {store} from './store.js'
+import axios from 'axios';
+import {store} from './store.js';
 
 export default {
     name:'ContactForm',
@@ -9,7 +9,8 @@ export default {
             store,
             name:'',
             email:'',
-            message:''
+            message:'',
+            errors:{}
         }
     },
     methods:{
@@ -19,7 +20,21 @@ export default {
                 email : this.email,
                 message : this.message,
             }
-            console.log(data);
+            //console.log(data);
+
+            axios.post('http://127.0.0.1:8000/api/contacts', data)
+            .then(result=>{
+                console.log(result.data);
+
+                if(!result.data.success){
+                    this.errors = result.data.errors;
+                }else{
+                    this.name='';
+                    this.email='';
+                    this.message='';
+                    this.errors={};
+                }
+            });
 
         }
     }
@@ -29,24 +44,27 @@ export default {
 <template>
 <div class="container mt-5">
     <div class="wrapper rounded-4 py-3">
-        <form class="w-50 text-start text-black">
+        <form class="w-50 text-start text-black" @submit.prevent="sendForm()">
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nome</label>
-                <input v-model.trim="name" type="text" class="form-control" placeholder="nome">
+                <input v-model.trim="name" type="text" class="form-control" :class="{'is-invalid' : errors.name}" placeholder="nome">
+                <p class="invalid-feedback" v-for="error in errors.name" :key="error">{{ error }}</p>
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input v-model.trim="email" type="email" class="form-control" placeholder="email">
+                <input v-model.trim="email" type="email" class="form-control" :class="{'is-invalid' : errors.email}"  placeholder="email">
+                <p class="invalid-feedback" v-for="error in errors.email" :key="error">{{ error }}</p>
             </div>
 
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Messaggio</label>
-                <textarea v-model.trim="message" class="form-control" rows="3"></textarea>
+                <textarea v-model.trim="message" class="form-control" :class="{'is-invalid' : errors.message}"  rows="3"></textarea>
+                <p class="invalid-feedback" v-for="error in errors.message" :key="error">{{ error }}</p>
             </div>
 
-            <button @click.prevent="sendForm()" type="submit" class="btn btn-primary">Invia</button>
+            <button  type="submit" class="btn btn-primary">Invia</button>
     </form>
     </div>
 
