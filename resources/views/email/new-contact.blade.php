@@ -2,8 +2,8 @@
 
 <p>Hai ricevuto un nuovo messaggio: <br>
 
-Nome: {{$lead->name}}
-Email: {{$lead->email}}
+Nome: {{$lead->name}} <br>
+Email: {{$lead->email}} <br>
 Message: <br>
 {{$lead->message}}
 
